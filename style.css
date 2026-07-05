@@ -1,0 +1,216 @@
+/* =====================================================
+   Flutter Wings — styles
+   Palette: coral #FF6B5B / leaf #4CD97B / cream #FFF8ED
+            ink #2B2140 / sun #FFD23F
+   ===================================================== */
+
+:root {
+  --coral: #FF6B5B;
+  --coral-dark: #E24E3F;
+  --leaf: #4CD97B;
+  --leaf-dark: #2FAE5B;
+  --cream: #FFF8ED;
+  --ink: #2B2140;
+  --sun: #FFD23F;
+  --shadow: rgba(43, 33, 64, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;             /* no scrolling during gameplay */
+  overscroll-behavior: none;
+  background: var(--ink);
+  font-family: 'Nunito', sans-serif;
+  touch-action: none;           /* prevent pinch/scroll gestures */
+}
+
+#game-wrap {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: pointer;
+}
+
+/* ---------- HUD ---------- */
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: max(14px, env(safe-area-inset-top)) 16px 0 16px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#score-display {
+  flex: 1;
+  text-align: center;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 8vw, 56px);
+  color: var(--cream);
+  text-shadow: 0 3px 0 var(--ink), 0 0 12px rgba(0,0,0,0.25);
+  -webkit-text-stroke: 2px var(--ink);
+  user-select: none;
+}
+
+.icon-btn {
+  pointer-events: all;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  color: var(--ink);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 0 var(--shadow);
+  cursor: pointer;
+  transition: transform 0.08s ease;
+}
+.icon-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--shadow); }
+
+/* ---------- Overlays ---------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(43, 33, 64, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 10;
+  transition: opacity 0.25s ease;
+}
+.overlay.hidden {
+  display: none;
+}
+
+.panel {
+  background: var(--cream);
+  border-radius: 28px;
+  padding: 32px 28px 28px;
+  width: min(86vw, 340px);
+  text-align: center;
+  box-shadow: 0 10px 0 var(--shadow), 0 20px 40px rgba(0,0,0,0.3);
+  border: 4px solid var(--ink);
+  animation: pop-in 0.28s cubic-bezier(.2,1.4,.4,1);
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.title {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.title span { color: var(--coral); }
+.title.small { font-size: 30px; margin-bottom: 14px; }
+
+.subtitle {
+  margin: 0 0 16px;
+  color: #6b6280;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.bird-preview {
+  width: 64px;
+  height: 64px;
+  margin: 4px auto 18px;
+}
+
+.primary-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--leaf);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  padding: 12px 36px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--leaf-dark);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.primary-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--leaf-dark);
+}
+
+.hint {
+  margin: 16px 0 0;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 14px;
+}
+.hint span { color: var(--coral-dark); }
+
+.stat-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 8px 0 6px;
+}
+.stat {
+  background: rgba(43,33,64,0.06);
+  border-radius: 14px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b6280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.stat-value {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.new-best {
+  font-weight: 800;
+  color: var(--coral-dark);
+  margin: 4px 0 14px;
+}
+.new-best.hidden { display: none; }
+
+/* Small phones: tighten panel */
+@media (max-width: 360px) {
+  .panel { padding: 24px 18px 22px; }
+  .title { font-size: 32px; }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Flutter Wings — A Flappy Bird Clone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="game-wrap">
+
+    <!-- Main render surface -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- HUD shown only while playing -->
+    <div id="hud">
+      <div id="score-display">0</div>
+      <button id="pause-btn" class="icon-btn" aria-label="Pause">❚❚</button>
+      <button id="mute-btn" class="icon-btn" aria-label="Mute">🔊</button>
+    </div>
+
+    <!-- Start screen -->
+    <div id="start-screen" class="overlay">
+      <div class="panel">
+        <h1 class="title">Flutter <span>Wings</span></h1>
+        <p class="subtitle">Tap, click, or hit space to fly</p>
+        <div class="bird-preview" id="bird-preview"></div>
+        <button id="start-btn" class="primary-btn">Play</button>
+        <p class="hint">High Score: <span id="start-high-score">0</span></p>
+      </div>
+    </div>
+
+    <!-- Pause screen -->
+    <div id="pause-screen" class="overlay hidden">
+      <div class="panel">
+        <h2 class="title small">Paused</h2>
+        <button id="resume-btn" class="primary-btn">Resume</button>
+      </div>
+    </div>
+
+    <!-- Game over screen -->
+    <div id="gameover-screen" class="overlay hidden">
+      <div class="panel">
+        <h2 class="title small">Ouch!</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-label">Score</span>
+            <span class="stat-value" id="final-score">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Best</span>
+            <span class="stat-value" id="final-high-score">0</span>
+          </div>
+        </div>
+        <p id="new-best-badge" class="new-best hidden">New Best! 🎉</p>
+        <button id="restart-btn" class="primary-btn">Play Again</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
