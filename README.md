@@ -35,5 +35,6 @@ npx serve .
 ## Notes on the implementation
 - Physics use delta-time scaling, so gameplay feels consistent whether the display runs at 60Hz, 90Hz, or 120Hz.
 - Difficulty ramps smoothly: pipe gap narrows and pipe speed/spawn-rate increase as your score rises, each capped at a sane minimum/maximum so it never becomes unfair-impossible.
+
 - Day/night is on its own independent cycle (not tied to score) with interpolated sky colors, a moving sun/moon, fading stars, and parallax clouds/hills.
 - High score is saved via `localStorage` with a try/catch fallback, so the game still runs fine in private-browsing modes where storage is blocked.
